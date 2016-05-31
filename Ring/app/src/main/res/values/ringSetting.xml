@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="TIME_GAME">20000</integer>
+    <integer name="maxRadius">100</integer>
+    <integer name="radius">20</integer>
+</resources>
