@@ -1,7 +1,4 @@
-package com.katya.ring.activity;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package com.katya.ring;
 
 import java.io.Serializable;
 

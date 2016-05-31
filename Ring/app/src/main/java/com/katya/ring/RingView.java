@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.katya.ring.activity.GameActivity;
-import com.katya.ring.activity.Result;
 import com.katya.ring.activity.ResultActivity;
 
 import java.util.ArrayList;
@@ -25,8 +24,8 @@ import java.util.Random;
 public class RingView extends View implements Runnable{
     private final static int COORDINATE_X = 0;
     private final static int COORDINATE_Y = 1;
-    private float TIME_RING;
-    private float TIME_GAME;
+    private float timeRing;
+    private float timeGame;
     private ArrayList<Result> results = new ArrayList<>();
     private int coordinateX;
     private int coordinateY;
@@ -58,8 +57,8 @@ public class RingView extends View implements Runnable{
     private void initDefaultParams(Resources resources) {
         maxRadius = resources.getInteger(R.integer.maxRadius);
         float speed = Setting.getInstance().getSpeedGrowthRing();
-        TIME_RING = maxRadius / speed;
-        TIME_GAME = resources.getInteger(R.integer.TIME_GAME);
+        timeRing = maxRadius / speed;
+        timeGame = resources.getInteger(R.integer.TIME_GAME);
     }
 
     private void initTouchListener() {
@@ -130,13 +129,13 @@ public class RingView extends View implements Runnable{
         super.onDraw(canvas);
         canvas.drawLine(0, 0, getWidth(), 0, successPaint);
         canvas.drawCircle(coordinateX, coordinateY, radius, paint);
-        handler.postDelayed(this, (long) TIME_RING);
+        handler.postDelayed(this, (long) timeRing);
     }
 
 
     @Override
     public void run() {
-        if ((System.currentTimeMillis() - startTimeGame) >= TIME_GAME) {
+        if ((System.currentTimeMillis() - startTimeGame) >= timeGame) {
             stopGame();
             return;
         }
